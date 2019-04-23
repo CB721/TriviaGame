@@ -14,13 +14,16 @@
 </head>
 
 <body>
-    <audio src="./assets/audio/Basketball Game.mp3" id="start-audio" preload="auto" loop="loop"></audio>
     <h1 class="container">Basketball Trivia!</h1>
+
+    <audio id="start-audio">
+        <source src="./assets/audio/Basketball Game.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="container basketball-heading">
         <div class="row">
             <div class="col-md-12">
-                <div class="timer"></div>
+                
                 <div class="game-area">
                     <div class="questions"> </div>
                     <div class="jumbotron">
