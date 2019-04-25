@@ -17,5 +17,8 @@ h1 {
     display: none;
 }
 #slam-button, #new-game-button {
-    display: none;
+    visibility: hidden;
+}
+.questions {
+    padding: 100px;
 }

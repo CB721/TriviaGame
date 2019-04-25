@@ -1,14 +1,10 @@
 $(document).ready(function () {
 
     //define game audio
-    let gameAudio = new Audio("./assets/audio/Basketball Game.mp3");
-    let slamDunkSound = new Audio("./assets/audio/Basketball Slam Dunk.mp3");
-    let dribbleSound = new Audio("./assets/audio/Basketball Bounce.mp3");
-    let backboardSound = new Audio("./assets/audio/Basketball Backboard.mp3");
-
-
-    //set multiple choice buttons
-    $(":radio").wrap("<span style='background-color:red'>")
+    let gameAudio = new Audio("./assets/audio/Basketball-Game.mp3");
+    let slamDunkSound = new Audio("./assets/audio/Basketball-Slam Dunk.mp3");
+    let dribbleSound = new Audio("./assets/audio/Basketball-Bounce.mp3");
+    let backboardSound = new Audio("./assets/audio/Basketball-Backboard.mp3");
 
     //on start button click
 
@@ -33,7 +29,7 @@ $(document).ready(function () {
 
         },
         {
-            question: "Which player who made the most three point shots?",
+            question: "Which player has made the most three point shots in one game?",
             answers: ["Klay Thompson", "Ray Allen", "LeBron James", "Stephen Curry"],
             correctAnswer: "Klay Thompson"
 
@@ -50,10 +46,11 @@ $(document).ready(function () {
             correctAnswer: "James Harden"
 
         }];
-        
 
-    //keep track of game scores and time
+
+
     let game = {
+        //keep track of game scores
         correct: 0,
         incorrect: 0,
         timeCount: 24,
@@ -78,30 +75,48 @@ $(document).ready(function () {
             //starts timer
             gameTimer = setInterval(game.timing, 1000);
             //places timer on html
-            $(".questions").prepend('<h2>Time Remaining: <span class="timer">24</span> Seconds </h2>');
+            $(".questions").prepend('<h2>Shot Clock: <span class="timer">24</span> Seconds </h2>');
             //go through each question in array
             for (var i = 0; i < questions.length; i++) {
-                //put each question in its own h2 div in questions div
+                console.log(questions[i].question);
+                //put each question in its own h3  div in questions div
                 $(".questions").append('<h3>' + questions[i].question + '</h3>');
                 //go through each answer and add to question div
                 for (var a = 0; a < questions[i].answers.length; a++) {
-                    $(".questions").append("<input type='radio' name='question-" + i + "' value='" + questions[i].answers[a] + "'>")
-                    console.log(questions[i].answers);
+                    $(".questions").append("<input type='radio' name='question-" + i + "' value='" + questions[i].answers[a] + "'>" + questions[i].answers[a])
                 }
             }
-            //show submit button
-            // ("#slam-button").show();
+            
         },
+        //show submit button
 
         //end game function
         gameEnd: function () {
+            //pause sound
             dribbleSound.pause();
+            //remove the timer and questions
             $(".timer").remove();
             $(".questions").remove();
+            //play game end sound
             gameAudio.play();
-            //if user input = [], then add one to unanswered questions
-            //else if user input === questions[i].answers then add one to correct
-            //else add one to incorrect
+            //check if question has been answered
+            for (var q = 0; q < questions.length; q++) {
+                $.each($("input[name='question-0']:checked"), function () {
+                    //add one to correct if input is correct answer
+                    if ($(this).val() == questions[q].correctAnswer) {
+                        console.log(this);
+                        game.correct++;
+                        console.log(game.correct);
+                    } else {
+                        //add one to incorrect if input isn't correct
+                        game.incorrect++;
+                        console.log(game.incorrect);
+                    }
+                });
+            }
+
+
+
             //display correct answers
             //display incorrect answers
             //display unanswered questions
