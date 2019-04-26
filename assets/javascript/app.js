@@ -19,31 +19,31 @@ $(document).ready(function () {
     let questions = [
         {
             question: "Which player has won the most titles?",
-            answers: ["Shaquille O'Neal", "Magic Johnson", "Bill Russell", "Kobe Bryant"],
-            correctAnswer: "Bill Russell"
+            answers: [" Shaquille O'Neal ", " Magic Johnson ", " Bill Russell ", " Kobe Bryant "],
+            correctAnswer: " Bill Russell "
         },
         {
             question: "Which team has won the most titles?",
-            answers: ["San Antonio Spurs", "Boston Celtics", "Golden State Warriors", "Los Angeles Lakers"],
-            correctAnswer: "Boston Celtics"
+            answers: [" San Antonio Spurs ", " Boston Celtics ", " Golden State Warriors ", " Los Angeles Lakers "],
+            correctAnswer: " Boston Celtics "
 
         },
         {
             question: "Which player has made the most three point shots in one game?",
-            answers: ["Klay Thompson", "Ray Allen", "LeBron James", "Stephen Curry"],
-            correctAnswer: "Klay Thompson"
+            answers: [" Klay Thompson ", " Ray Allen ", " Steve Kerr ", " Stephen Curry "],
+            correctAnswer: " Klay Thompson "
 
         },
         {
             question: "Which player has scored the most points in their entire professional career?",
-            answers: ["Kobe Bryant", "Michael Jordan", "Kevin Durant", "Kareem Abdul-Jabbar"],
-            correctAnswer: "Kareem Abdul-Jabbar"
+            answers: [" Kobe Bryant ", " Michael Jordan ", " Kevin Durant ", " Kareem Abdul-Jabbar "],
+            correctAnswer: " Kareem Abdul-Jabbar "
 
         },
         {
             question: "Which player goes by the nickname 'The Beard'?",
-            answers: ["Dirk Nowitzki", "James Harden", "Larry Bird", "Scottie Pippen"],
-            correctAnswer: "James Harden"
+            answers: [" Dirk Nowitzki ", " James Harden ", " Larry Bird ", " Scottie Pippen "],
+            correctAnswer: " James Harden "
 
         }];
 
@@ -78,50 +78,92 @@ $(document).ready(function () {
             $(".questions").prepend('<h2>Shot Clock: <span class="timer">24</span> Seconds </h2>');
             //go through each question in array
             for (var i = 0; i < questions.length; i++) {
-                console.log(questions[i].question);
                 //put each question in its own h3  div in questions div
                 $(".questions").append('<h3>' + questions[i].question + '</h3>');
                 //go through each answer and add to question div
                 for (var a = 0; a < questions[i].answers.length; a++) {
-                    $(".questions").append("<input type='radio' name='question-" + i + "' value='" + questions[i].answers[a] + "'>" + questions[i].answers[a])
+                    $(".questions").append("<input type='radio' name='question-" + i + "' value='" + questions[i].answers[a] + "'>" + questions[i].answers[a]);
                 }
             }
-            
+            //show submit button
+            // $(".questions").append("<button id="slam-button">Slam Dunk</button>");
         },
-        //show submit button
 
         //end game function
         gameEnd: function () {
             //pause sound
             dribbleSound.pause();
+            //stop timer
+            clearInterval(gameTimer);
             //remove the timer and questions
             $(".timer").remove();
             $(".questions").remove();
             //play game end sound
             gameAudio.play();
+            console.log('hi');
             //check if question has been answered
-            for (var q = 0; q < questions.length; q++) {
-                $.each($("input[name='question-0']:checked"), function () {
-                    //add one to correct if input is correct answer
-                    if ($(this).val() == questions[q].correctAnswer) {
-                        console.log(this);
-                        game.correct++;
-                        console.log(game.correct);
-                    } else {
-                        //add one to incorrect if input isn't correct
-                        game.incorrect++;
-                        console.log(game.incorrect);
-                    }
-                });
-            }
+            $.each($("input[name='question-0']:checked"), function () {
+                console.log(this);
+                //add one to correct if input is correct answer
+                if ($(this).val() == questions[0].correctAnswer) {
+                    game.correct++;
+                } else {
+                    //add one to incorrect if input isn't correct
+                    game.incorrect++;
+                }
+            });
+            $.each($("input[name='question-1']:checked"), function () {
+                //add one to correct if input is correct answer
+                if ($(this).val() == questions[1].correctAnswer) {
+                    game.correct++;
+                } else {
+                    //add one to incorrect if input isn't correct
+                    game.incorrect++;
+                }
+            });
+            $.each($("input[name='question-2']:checked"), function () {
+                //add one to correct if input is correct answer
+                if ($(this).val() == questions[2].correctAnswer) {
+                    game.correct++;
+                } else {
+                    //add one to incorrect if input isn't correct
+                    game.incorrect++;
+                }
+            });
+            $.each($("input[name='question-3']:checked"), function () {
+                //add one to correct if input is correct answer
+                if ($(this).val() == questions[3].correctAnswer) {
+                    game.correct++;
+                } else {
+                    //add one to incorrect if input isn't correct
+                    game.incorrect++;
+                }
+            });
+            $.each($("input[name='question-4']:checked"), function () {
+                //add one to correct if input is correct answer
+                if ($(this).val() == questions[4].correctAnswer) {
+                    game.correct++;
+                } else {
+                    //add one to incorrect if input isn't correct
+                    game.incorrect++;
+                }
+            });
 
+            //show results
+            this.result();
 
-
-            //display correct answers
-            //display incorrect answers
-            //display unanswered questions
             //display game reset button
         },
+        result: function () {
+            //stop timer
+            // clearInterval(timing());
+            //display correct answers
+            $(".questions").append("<h3>Correct Answers: " + this.correct + "</h3>");
+            //display incorrect answers
+            $(".questions").append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
+            //display unanswered questions
+            $(".questions").append("<h3>Unanswered: " + (questions.length - (this.correct + this.incorrect)))
+        }
 
     }
 
