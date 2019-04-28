@@ -1,0 +1,25 @@
+body {
+    font-family: 'Audiowide', cursive;
+    background-image: url(../images/basketballbackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #f25a0e;
+}
+.jumbotron {
+    margin-top: 10rem;
+    background-color: #f25a0e;
+}
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+#start-audio {
+    display: none;
+}
+#submit {
+   background-color: #f25a0e;
+   float: right;
+}
+.questions {
+    padding: 100px;
+}

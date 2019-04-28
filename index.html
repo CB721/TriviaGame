@@ -7,37 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 
 </head>
 
 <body>
     <h1 class="container">Basketball Trivia!</h1>
-
-    <audio id="start-audio">
-        <source src="./assets/audio/Basketball Game.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="container basketball-heading">
         <div class="row">
             <div class="col-md-12">
                 <div class="game-area">
                     <div class="questions"></div>
                     <div class="jumbotron">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" id="start-button">Start</button>
-                        <button type="button" class="btn btn-outline-light" id="slam-button">Slam Dunk</button>
-                        <button type="button" class="btn btn-outline-light" id="new-game-button">New Game</button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block"
+                            id="start-button">Start</button>
                     </div>
-
+                    <div id="final-results"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.0.js" integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.js"
+        integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
 </body>
 
